@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عيادة الشفاء</title>
+ 
+  <link href="assests/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+ 
+    .navbar {
+      background-color: #ffffff;
+      padding: 12px 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    /*nav لتظبيط اسم العيادة في   */
+    .navbar-brand {   
+      font-weight: bold;
+      color: #0d1b2a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    /*nav لوجو الي جنب اسم العياده في  */
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    /*  الكلمات الي المفروض ندوس عليها تودينا للينك زي الرئيسيه */
+    .nav-link {
+      color: #333333 !important;  /* important يعني ليها اولويه عاليه واعلي من bootstrap */
+      font-weight: 500;
+      margin-left: 20px;
+    }
+    
+    .carousel-item {  
+      position: relative;
+      height: 450px;   /* ارتفاع الصور في السلايدر */
+    }
+    .carousel-item img {   /* اي صوره داخل السلايد*/
+      height: 100%;
+      object-fit: cover;
+    }
+     /* بتتنفذ بعد ما اكتب كلام علي الصوره  */
+    .carousel-item::after {   
+      content: "";
+      position: absolute;
+      top: 0;        /* بتساعد اننا نبدا من فوق لتحت */
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.40);
+      pointer-events: none;     /* هدفها تمنع الضغط علي العناصر الي تحته وهي الصوره */
+    }
+
+    .carousel-caption {  /* النص الموجود فوق الصوره */
+      top: 25%;
+      bottom: auto !important;
+      right: 6%;
+      left: auto;
+      text-align: right;
+      max-width: 550px;
+      z-index: 2;  /* بيخلي ال caption يظهر فوق طبقه التغميق */
+      padding: 0;
+      margin: 0;
+    }
+
+    /*  حجز الكتروني */
+    .hero-badge {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #007a78;
+      font-weight: bold;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .carousel-caption h1 {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .carousel-caption p {
+      font-size: 1.05rem;
+      color: #e0e0e0;
+      margin-bottom: 18px;
+      line-height: 1.6;  /*المسافه بين سطور العنوان */
+    }
+
+    /* الازرار الي اخر الصور */
+    .btn-hero {
+      background-color: #007a78;
+      color: #ffffff;
+      border-radius: 25px;
+      padding: 10px 32px;
+      font-weight: bold;
+      border: none;
+      transition: 0.3s;  /* لما الون يتغير عند ال hover التغيير يحصل خلال الوقت ده */
+    }
+    .btn-hero:hover {
+      background-color: #005a58;
+      color: white;
+    }
+  </style>
+</head>
+<body style="background-color: #e8f7f5;">
+ 
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand me-2" href="#">
+        <div class="brand-icon">
+            <img src="assests/images/logo.png" style="width: 70px ; height: 45px ;">
+        </div>
+        <span>عيادة الشفاء</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-4">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">الرئيسية</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">خدماتنا</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">الأطباء</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">تواصل معنا</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="assests/images/slider-1.jpg" class="d-block w-100" alt="أطباء بخبرة">
+        <div class="carousel-caption">
+          <span class="hero-badge">فريق متخصص</span>
+          <h1>أطباء بخبرة تتجاوز عشرين عاماً</h1>
+          <p>تشخيص دقيق وخطة علاجية واضحة، لأن راحتك وثقتك هي أساس عملنا اليومي.</p>
+          <a href="#" class="btn btn-hero">تعرف على الفريق</a>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="assests/images/slider-3.jpg" class="d-block w-100" alt="حجز إلكتروني">
+        <div class="carousel-caption">
+          <span class="hero-badge">حجز إلكتروني</span>
+          <h1>موعدك في أقل من دقيقة</h1>
+          <p>اختر التخصص والوقت المناسب لك، وسنؤكد الحجز عبر رسالة فورية على هاتفك.</p>
+          <a href="#" class="btn btn-hero">ابدأ الحجز</a>
+        </div>
+      </div>
+
+ 
+      <div class="carousel-item">
+        <img src="assests/images/WhatsApp Image 2026-08-18 at 3.57.31 PM.jpeg" class="d-block w-100" alt="رعاية تليق بك">
+        <div class="carousel-caption">
+          <span class="hero-badge">رعاية تليق بك</span>
+          <h1>صحتك تبدأ من هنا</h1>
+          <p>نخبة من الأطباء وأحدث الأجهزة الطبية لخدمتك على مدار الأسبوع، مع متابعة دقيقة لكل حالة.</p>
+          <a href="#" class="btn btn-hero">احجز الآن</a>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">السابق</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">التالي</span>
+    </button>
+  </div>
+
+  <div class="mt-5"></div>
+
+ <div style="background-color: white; padding: 60px 0;">
+    <center>
+        <div style="width: 120px; height: 35px; background-color: #e8f7f5; color: #007a78; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">أقسامنا الطبية</div>
+        <div class="mt-3"></div>
+        <p style="color: #111827; font-size: 32px; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-bottom: 5px;">خدمات نقدمها بعناية</p>
+        <p style="color: #6b7280; font-size: 15px; margin-bottom: 40px;">كل قسم مجهز بأحدث التقنيات وفريق تمريض مدرب لمتابعتك خطوة بخطوة.</p>
+    </center>
+
+    <div class="container">
+        
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 text-center align-items-center" style="border-radius: 20px;">
+                    <div style="width: 50px; height: 50px; background-color: #e8f7f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;" class="mb-3">💓</div>
+                    <h5 class="card-title fw-bold" style="color: #1f2937;">قسم القلب</h5>
+                    <p class="card-text text-muted small my-2">تشخيص وعلاج أمراض القلب بأحدث أجهزة الرسم والموجات الصوتية.</p>
+                    <a href="#" class="btn mt-3" style="border: 1px solid #007a78; color: #007a78; border-radius: 20px; font-size: 14px; padding: 6px 20px; font-weight: 600;">احجز في هذا القسم</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 text-center align-items-center" style="border-radius: 20px;">
+                    <div style="width: 50px; height: 50px; background-color: #e8f7f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;" class="mb-3">🫁</div>
+                    <h5 class="card-title fw-bold" style="color: #1f2937;">الصدر والحساسية</h5>
+                    <p class="card-text text-muted small my-2">متابعة دقيقة لحالات الربو والحساسية وأمراض الجهاز التنفسي.</p>
+                    <a href="#" class="btn mt-3" style="border: 1px solid #007a78; color: #007a78; border-radius: 20px; font-size: 14px; padding: 6px 20px; font-weight: 600;">احجز في هذا القسم</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 text-center align-items-center" style="border-radius: 20px;">
+                    <div style="width: 50px; height: 50px; background-color: #e8f7f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;" class="mb-3">😁</div>
+                    <h5 class="card-title fw-bold" style="color: #1f2937;">طب الأسنان</h5>
+                    <p class="card-text text-muted small my-2">تجميل وتركيبات وعلاج الجذور في جلسات مريحة وبدون ألم.</p>
+                    <a href="#" class="btn mt-3" style="border: 1px solid #007a78; color: #007a78; border-radius: 20px; font-size: 14px; padding: 6px 20px; font-weight: 600;">احجز في هذا القسم</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center g-4 mt-2">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 text-center align-items-center" style="border-radius: 20px;">
+                    <div style="width: 50px; height: 50px; background-color: #e8f7f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;" class="mb-3">💧</div>
+                    <h5 class="card-title fw-bold" style="color: #1f2937;">الجلدية والتجميل</h5>
+                    <p class="card-text text-muted small my-2">حلول للبشرة والشعر بتقنيات الليزر المعتمدة عالمياً.</p>
+                    <a href="#" class="btn mt-3" style="border: 1px solid #007a78; color: #007a78; border-radius: 20px; font-size: 14px; padding: 6px 20px; font-weight: 600;">احجز في هذا القسم</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 text-center align-items-center" style="border-radius: 20px;">
+                    <div style="width: 50px; height: 50px; background-color: #e8f7f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;" class="mb-3">👶</div>
+                    <h5 class="card-title fw-bold" style="color: #1f2937;">طب الأطفال</h5>
+                    <p class="card-text text-muted small my-2">متابعة النمو والتطعيمات ورعاية كاملة لطفلك منذ الولادة.</p>
+                    <a href="#" class="btn mt-3" style="border: 1px solid #007a78; color: #007a78; border-radius: 20px; font-size: 14px; padding: 6px 20px; font-weight: 600;">احجز في هذا القسم</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 text-center align-items-center" style="border-radius: 20px;">
+                    <div style="width: 50px; height: 50px; background-color: #e8f7f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;" class="mb-3">💊</div>
+                    <h5 class="card-title fw-bold" style="color: #1f2937;">جراحة العظام</h5>
+                    <p class="card-text text-muted small my-2">علاج الكسور والإصابات الرياضية مع برنامج تأهيل متكامل.</p>
+                    <a href="#" class="btn mt-3" style="border: 1px solid #007a78; color: #007a78; border-radius: 20px; font-size: 14px; padding: 6px 20px; font-weight: 600;">احجز في هذا القسم</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<section class="py-5" style="background-color: #f0f9f8;" dir="rtl">
+  <div class="container text-center py-4">
+    
+   
+    <span class="badge rounded-pill px-3 py-2 mb-2" style="background-color: #e8f7f5; color: #007a78; font-size: 0.85rem; font-weight: 600;">
+      فريق العمل
+    </span>
+    <h2 class="fw-bold mb-5" style="color: #0f172a; font-size: 2.2rem;">نخبة من الأطباء</h2>
+ 
+    <div class="row g-4 justify-content-center">
+      
+  
+      <div class="col-md-4">
+        <div class="card border-0 shadow-sm p-4 text-center rounded-4 h-100 align-items-center" style="background-color: #ffffff;">
+          <div class="mb-3 rounded-circle overflow-hidden shadow-sm" style="width: 120px; height: 120px;">
+            <img src="assests/images/person.jpg" alt="د. كريم منصور" class="w-100 h-100" style="object-fit: cover;">
+          </div>
+          <h5 class="fw-bold mb-1" style="color: #1f2937;">د. كريم منصور</h5>
+          <p class="text-muted small mb-0">أخصائي جراحة العظام</p>
+        </div>
+      </div>
+
+ 
+      <div class="col-md-4">
+        <div class="card border-0 shadow-sm p-4 text-center rounded-4 h-100 align-items-center" style="background-color: #ffffff;">
+          <div class="mb-3 rounded-circle overflow-hidden shadow-sm" style="width: 120px; height: 120px;">
+            <img src="assests/images/person.jpg" alt="د. منى فؤاد" class="w-100 h-100" style="object-fit: cover;">
+          </div>
+          <h5 class="fw-bold mb-1" style="color: #1f2937;">د. منى فؤاد</h5>
+          <p class="text-muted small mb-0">استشاري طب الأطفال</p>
+        </div>
+      </div>
+
+ 
+      <div class="col-md-4">
+        <div class="card border-0 shadow-sm p-4 text-center rounded-4 h-100 align-items-center" style="background-color: #ffffff;">
+          <div class="mb-3 rounded-circle overflow-hidden shadow-sm" style="width: 120px; height: 120px;">
+            <img src="assests/images/person.jpg" alt="د. أحمد سليم" class="w-100 h-100" style="object-fit: cover;">
+          </div>
+          <h5 class="fw-bold mb-1" style="color: #1f2937;">د. أحمد سليم</h5>
+          <p class="text-muted small mb-0">استشاري القلب والأوعية الدموية</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+ 
+<section class="py-5" style="background-color: #ffffff;" dir="rtl">
+  <div class="container">
+    <div class="rounded-4 p-5 text-center text-white shadow-sm" style="background-color: #005a58;">
+      <h2 class="fw-bold mb-3">جاهزون لاستقبالك اليوم</h2>
+      <p class="mb-4 opacity-75" style="font-size: 0.95rem;">اختر موعدك إلكترونياً واختر الطبيب والوقت المناسب لك.</p>
+      
+      <!--   Modal -->
+      <button type="button" class="btn btn-light rounded-pill px-5 py-2 fw-bold" style="color: #005a58; font-size: 0.9rem;" data-bs-toggle="modal" data-bs-target="#bookingModal">
+        احجز موعدك الآن
+      </button>
+    </div>
+  </div>
+</section>
+
+ 
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true" dir="rtl">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 border-0 shadow">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold" id="bookingModalLabel" style="color: #007a78;">حجز موعد جديد</h5>
+        <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">الاسم بالكامل</label>
+            <input type="text" class="form-control rounded-3" placeholder="أدخل اسمك  ">
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">رقم الهاتف</label>
+            <input type="tel" class="form-control rounded-3" >
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">اختر العيادة / القسم</label>
+            <select class="form-select rounded-3">
+              <option selected disabled>اختر القسم المناسب</option>
+              <option>قسم القلب</option>
+              <option>الصدر والحساسية</option>
+              <option>طب الأسنان</option>
+              <option>جراحة العظام</option>
+              <option>طب الأطفال</option>
+              <option>الجلدية والتجميل</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label class="form-label small fw-semibold">تاريخ الزيارة</label>
+            <input type="date" class="form-control rounded-3">
+          </div>
+          <button type="submit" class="btn w-100 rounded-pill text-white fw-bold py-2" style="background-color: #007a78;">تأكيد الحجز</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
+<footer style="background-color: #062826; color: #d1d5db;" class="pt-5 pb-3" dir="rtl">
+  <div class="container">
+    <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
+      
+       
+      <div class="col-md-4">
+        <h5 class="fw-bold text-white mb-3 d-flex align-items-center gap-2">
+          <span>🏥</span> عيادة الشفاء
+        </h5>
+        <p class="small leading-relaxed mb-3 opacity-75" style="max-width: 300px;">
+          
+        </p>
+        <div class="d-flex gap-2">
+          <a href="#" class="btn btn-sm btn-outline-light rounded-circle opacity-75">🌐</a>
+          <a href="#" class="btn btn-sm btn-outline-light rounded-circle opacity-75">📷</a>
+          <a href="#" class="btn btn-sm btn-outline-light rounded-circle opacity-75">💬</a>
+        </div>
+      </div>
+ 
+      <div class="col-md-2">
+        <h6 class="fw-bold text-white mb-3">روابط</h6>
+        <ul class="list-unstyled small opacity-75 d-flex flex-column gap-2">
+          <li><a href="#" class="text-white text-decoration-none">الرئيسية</a></li>
+          <li><a href="#" class="text-white text-decoration-none">خدماتنا</a></li>
+          <li><a href="#" class="text-white text-decoration-none">الأطباء</a></li>
+        </ul>
+      </div>
+
+     
+      <div class="col-md-3">
+        <h6 class="fw-bold text-white mb-3">مواعيد العمل</h6>
+        <ul class="list-unstyled small opacity-75 d-flex flex-column gap-2">
+          <li>السبت - الخميس: 9ص - 10م</li>
+          <li>الجمعة: 2م - 10م</li>
+          <li>الطوارئ: على مدار الساعة</li>
+        </ul>
+      </div>
+
+     
+      <div class="col-md-3">
+        <h6 class="fw-bold text-white mb-3">تواصل معنا</h6>
+        <ul class="list-unstyled small opacity-75 d-flex flex-column gap-2">
+          <li>📍 شارع النيل، المعادي، القاهرة</li>
+          <li>📞 19999</li>
+          <li>✉️ info@shifa-clinic.eg</li>
+        </ul>
+      </div>
+
+    </div>
+
+ 
+    <div class="text-center pt-3 small opacity-50">
+      جميع الحقوق محفوظة © عيادة الشفاء 2026
+    </div>
+  </div>
+</footer>
+        </div>
+          
+    </div>
+  </div>
+
+ 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
