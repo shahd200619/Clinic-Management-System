@@ -1,436 +1,549 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>عيادة الشفاء</title>
- 
+  <title>El-Shifa Clinic</title>
+  <!-- Bootstrap 5 CSS -->
   <link href="assests/css/bootstrap.min.css" rel="stylesheet">
-  <style>
- 
-    .navbar {
-      background-color: #ffffff;
-      padding: 12px 24px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    /*nav لتظبيط اسم العيادة في   */
-    .navbar-brand {   
-      font-weight: bold;
-      color: #0d1b2a;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    /*nav لوجو الي جنب اسم العياده في  */
-    .brand-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-    /*  الكلمات الي المفروض ندوس عليها تودينا للينك زي الرئيسيه */
-    .nav-link {
-      color: #333333 !important;  /* important يعني ليها اولويه عاليه واعلي من bootstrap */
-      font-weight: 500;
-      margin-left: 20px;
-    }
-    
-    .carousel-item {  
-      position: relative;
-      height: 450px;   /* ارتفاع الصور في السلايدر */
-    }
-    .carousel-item img {   /* اي صوره داخل السلايد*/
-      height: 100%;
-      object-fit: cover;
-    }
-     /* بتتنفذ بعد ما اكتب كلام علي الصوره  */
-    .carousel-item::after {   
-      content: "";
-      position: absolute;
-      top: 0;        /* بتساعد اننا نبدا من فوق لتحت */
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.40);
-      pointer-events: none;     /* هدفها تمنع الضغط علي العناصر الي تحته وهي الصوره */
-    }
-
-    .carousel-caption {  /* النص الموجود فوق الصوره */
-      top: 25%;
-      bottom: auto !important;
-      right: 6%;
-      left: auto;
-      text-align: right;
-      max-width: 550px;
-      z-index: 2;  /* بيخلي ال caption يظهر فوق طبقه التغميق */
-      padding: 0;
-      margin: 0;
-    }
-
-    /*  حجز الكتروني */
-    .hero-badge {
-      display: inline-block;
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #007a78;
-      font-weight: bold;
-      padding: 6px 18px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-    }
-
-    .carousel-caption h1 {
-      font-size: 2.2rem;
-      font-weight: bold;
-      color: #ffffff;
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
-
-    .carousel-caption p {
-      font-size: 1.05rem;
-      color: #e0e0e0;
-      margin-bottom: 18px;
-      line-height: 1.6;  /*المسافه بين سطور العنوان */
-    }
-
-    /* الازرار الي اخر الصور */
-    .btn-hero {
-      background-color: #007a78;
-      color: #ffffff;
-      border-radius: 25px;
-      padding: 10px 32px;
-      font-weight: bold;
-      border: none;
-      transition: 0.3s;  /* لما الون يتغير عند ال hover التغيير يحصل خلال الوقت ده */
-    }
-    .btn-hero:hover {
-      background-color: #005a58;
-      color: white;
-    }
-  </style>
+  <!-- Font Awesome 6 Free CDN -->
+  <link rel="stylesheet" href="assests/css/all.min.css">
+  <!-- Google Fonts (Plus Jakarta Sans) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: #e8f7f5;">
- 
-  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand me-2" href="#">
-        <div class="brand-icon">
-            <img src="assests/images/logo.png" style="width: 70px ; height: 45px ;">
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top navbar-glass py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-dark d-flex align-items-center gap-2" href="#heroCarousel">
+        <div class="brand-icon rounded-3 p-1">
+          <img src="images/logo.png" alt="Logo" style="width: 45px; height: 35px; object-fit: contain;">
         </div>
-        <span>عيادة الشفاء</span>
+        <span class="fs-5 tracking-tight fw-extrabold">El-Shifa <span class="text-primary-custom">Clinic</span></span>
       </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-4">
+        <ul class="navbar-nav ms-auto me-4 fw-semibold gap-lg-2">
           <li class="nav-item">
-            <a class="nav-link active" href="#">الرئيسية</a>
+            <a class="nav-link text-dark active" href="#heroCarousel">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">خدماتنا</a>
+            <a class="nav-link text-dark" href="#services">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">الأطباء</a>
+            <a class="nav-link text-dark" href="#doctors">Doctors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">تواصل معنا</a>
+            <a class="nav-link text-dark" href="#faq">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="#testimonials">Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="#footer">Contact Us</a>
           </li>
         </ul>
+        <button class="btn btn-primary-custom rounded-pill px-4 py-2 fw-semibold btn-open-booking ms-lg-2">
+          <i class="fa-regular fa-calendar-check me-2"></i>Book Now
+        </button>
       </div>
     </div>
   </nav>
 
+  <!-- Hero Carousel Section -->
   <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="assests/images/slider-1.jpg" class="d-block w-100" alt="أطباء بخبرة">
-        <div class="carousel-caption">
-          <span class="hero-badge">فريق متخصص</span>
-          <h1>أطباء بخبرة تتجاوز عشرين عاماً</h1>
-          <p>تشخيص دقيق وخطة علاجية واضحة، لأن راحتك وثقتك هي أساس عملنا اليومي.</p>
-          <a href="#" class="btn btn-hero">تعرف على الفريق</a>
+      
+      <div class="carousel-item active carousel-overlay">
+        <img src="images/slider-1.jpg" class="d-block w-100" alt="Experienced Doctors">
+        <div class="carousel-caption p-0 m-0">
+          <span class="badge bg-white text-primary-custom fw-bold px-3 py-2 rounded-pill mb-3 shadow-sm border">
+            <i class="fa-solid fa-user-doctor me-1"></i> Specialized Team
+          </span>
+          <h1 class="fw-extrabold text-white display-5 mb-3 leading-tight">Doctors with over 20 years of experience</h1>
+          <p class="text-light fs-6 mb-4 opacity-90">Accurate diagnosis and a clear treatment plan, because your comfort and trust are our priority.</p>
+          <a href="#doctors" class="btn btn-primary-custom rounded-pill px-4 py-2.5 fw-bold">Meet the Team</a>
         </div>
       </div>
 
-      <div class="carousel-item">
-        <img src="assests/images/slider-3.jpg" class="d-block w-100" alt="حجز إلكتروني">
-        <div class="carousel-caption">
-          <span class="hero-badge">حجز إلكتروني</span>
-          <h1>موعدك في أقل من دقيقة</h1>
-          <p>اختر التخصص والوقت المناسب لك، وسنؤكد الحجز عبر رسالة فورية على هاتفك.</p>
-          <a href="#" class="btn btn-hero">ابدأ الحجز</a>
+      <div class="carousel-item carousel-overlay">
+        <img src="images/slider-3.jpg" class="d-block w-100" alt="Online Booking">
+        <div class="carousel-caption p-0 m-0">
+          <span class="badge bg-white text-primary-custom fw-bold px-3 py-2 rounded-pill mb-3 shadow-sm border">
+            <i class="fa-solid fa-clock me-1"></i> Quick Booking
+          </span>
+          <h1 class="fw-extrabold text-white display-5 mb-3 leading-tight">Your appointment in less than a minute</h1>
+          <p class="text-light fs-6 mb-4 opacity-90">Choose the department and time that suits you, and get instant SMS confirmation.</p>
+          <button type="button" class="btn btn-primary-custom rounded-pill px-4 py-2.5 fw-bold btn-open-booking">Start Booking</button>
         </div>
       </div>
 
- 
-      <div class="carousel-item">
-        <img src="assests/images/WhatsApp Image 2026-08-18 at 3.57.31 PM.jpeg" class="d-block w-100" alt="رعاية تليق بك">
-        <div class="carousel-caption">
-          <span class="hero-badge">رعاية تليق بك</span>
-          <h1>صحتك تبدأ من هنا</h1>
-          <p>نخبة من الأطباء وأحدث الأجهزة الطبية لخدمتك على مدار الأسبوع، مع متابعة دقيقة لكل حالة.</p>
-          <a href="#" class="btn btn-hero">احجز الآن</a>
+      <div class="carousel-item carousel-overlay">
+        <img src="images/WhatsApp Image 2026-08-18 at 3.57.31 PM.jpeg" class="d-block w-100" alt="Care You Deserve">
+        <div class="carousel-caption p-0 m-0">
+          <span class="badge bg-white text-primary-custom fw-bold px-3 py-2 rounded-pill mb-3 shadow-sm border">
+            <i class="fa-solid fa-heart-pulse me-1"></i> Quality Care
+          </span>
+          <h1 class="fw-extrabold text-white display-5 mb-3 leading-tight">Your health starts here</h1>
+          <p class="text-light fs-6 mb-4 opacity-90">Elite doctors and modern equipment at your service with dedicated care.</p>
+          <button type="button" class="btn btn-primary-custom rounded-pill px-4 py-2.5 fw-bold btn-open-booking">Book Now</button>
         </div>
       </div>
 
     </div>
 
     <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">السابق</span>
+      <span class="carousel-control-prev-icon p-3 bg-dark bg-opacity-25 rounded-circle" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">التالي</span>
+      <span class="carousel-control-next-icon p-3 bg-dark bg-opacity-25 rounded-circle" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
     </button>
   </div>
 
-  <div class="mt-5"></div>
-
- <div style="background-color: white; padding: 60px 0;">
-    <center>
-        <div style="width: 120px; height: 35px; background-color: #e8f7f5; color: #007a78; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">أقسامنا الطبية</div>
-        <div class="mt-3"></div>
-        <p style="color: #111827; font-size: 32px; font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-bottom: 5px;">خدمات نقدمها بعناية</p>
-        <p style="color: #6b7280; font-size: 15px; margin-bottom: 40px;">كل قسم مجهز بأحدث التقنيات وفريق تمريض مدرب لمتابعتك خطوة بخطوة.</p>
-    </center>
-
+  <!-- Stats Section -->
+  <section class="py-4 bg-white border-bottom shadow-sm">
     <div class="container">
+      <div class="row text-center align-items-center">
+        <div class="col-6 col-md-3 stat-box py-2">
+          <i class="fa-solid fa-users fs-2 text-primary-custom mb-2 opacity-85"></i>
+          <h3 class="fw-bold mb-0 text-dark">15,000+</h3>
+          <p class="text-muted small fw-medium mb-0">Happy Patients</p>
+        </div>
+        <div class="col-6 col-md-3 stat-box py-2">
+          <i class="fa-solid fa-stethoscope fs-2 text-primary-custom mb-2 opacity-85"></i>
+          <h3 class="fw-bold mb-0 text-dark">25+</h3>
+          <p class="text-muted small fw-medium mb-0">Expert Doctors</p>
+        </div>
+        <div class="col-6 col-md-3 stat-box py-2">
+          <i class="fa-solid fa-hospital fs-2 text-primary-custom mb-2 opacity-85"></i>
+          <h3 class="fw-bold mb-0 text-dark">6</h3>
+          <p class="text-muted small fw-medium mb-0">Medical Clinics</p>
+        </div>
+        <div class="col-6 col-md-3 py-2">
+          <i class="fa-solid fa-award fs-2 text-primary-custom mb-2 opacity-85"></i>
+          <h3 class="fw-bold mb-0 text-dark">20+</h3>
+          <p class="text-muted small fw-medium mb-0">Years Experience</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Medical Departments Section -->
+  <section id="services" class="py-5 bg-white">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <span class="badge bg-light text-primary-custom fw-bold px-3 py-2 rounded-pill mb-2 border">
+          Medical Departments
+        </span>
+        <h2 class="fw-bold text-dark display-6 mb-2">Services Provided with Care</h2>
+        <p class="text-muted col-md-7 mx-auto">Every department is equipped with modern technology and a professional medical team.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Cardiology -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm p-4 text-center align-items-center rounded-4 dept-card">
+            <div class="icon-box mb-3">
+              <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-2">Cardiology</h5>
+            <p class="text-muted small mb-4">Diagnosis and treatment of heart conditions using modern ECG and ultrasound systems.</p>
+            <button type="button" class="btn btn-outline-custom rounded-pill px-4 py-2 text-sm fw-semibold mt-auto btn-dept-booking" data-dept="Cardiology Department">
+              Book Department
+            </button>
+          </div>
+        </div>
+
+        <!-- Pulmonology -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm p-4 text-center align-items-center rounded-4 dept-card">
+            <div class="icon-box mb-3">
+              <i class="fa-solid fa-lungs"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-2">Pulmonology & Allergy</h5>
+            <p class="text-muted small mb-4">Specialized care for asthma, allergy treatments, and respiratory diseases.</p>
+            <button type="button" class="btn btn-outline-custom rounded-pill px-4 py-2 text-sm fw-semibold mt-auto btn-dept-booking" data-dept="Pulmonology & Allergy">
+              Book Department
+            </button>
+          </div>
+        </div>
+
+        <!-- Dentistry -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm p-4 text-center align-items-center rounded-4 dept-card">
+            <div class="icon-box mb-3">
+              <i class="fa-solid fa-tooth"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-2">Dentistry</h5>
+            <p class="text-muted small mb-4">Cosmetic treatments, implants, and root canals in comfortable sessions.</p>
+            <button type="button" class="btn btn-outline-custom rounded-pill px-4 py-2 text-sm fw-semibold mt-auto btn-dept-booking" data-dept="Dentistry">
+              Book Department
+            </button>
+          </div>
+        </div>
+
+        <!-- Dermatology -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm p-4 text-center align-items-center rounded-4 dept-card">
+            <div class="icon-box mb-3">
+              <i class="fa-solid fa-spa"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-2">Dermatology</h5>
+            <p class="text-muted small mb-4">Comprehensive skin and hair care using globally certified laser technologies.</p>
+            <button type="button" class="btn btn-outline-custom rounded-pill px-4 py-2 text-sm fw-semibold mt-auto btn-dept-booking" data-dept="Dermatology & Cosmetology">
+              Book Department
+            </button>
+          </div>
+        </div>
+
+        <!-- Pediatrics -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm p-4 text-center align-items-center rounded-4 dept-card">
+            <div class="icon-box mb-3">
+              <i class="fa-solid fa-baby"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-2">Pediatrics</h5>
+            <p class="text-muted small mb-4">Growth monitoring, vaccinations, and complete healthcare for children.</p>
+            <button type="button" class="btn btn-outline-custom rounded-pill px-4 py-2 text-sm fw-semibold mt-auto btn-dept-booking" data-dept="Pediatrics">
+              Book Department
+            </button>
+          </div>
+        </div>
+
+        <!-- Orthopedics -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm p-4 text-center align-items-center rounded-4 dept-card">
+            <div class="icon-box mb-3">
+              <i class="fa-solid fa-bone"></i>
+            </div>
+            <h5 class="fw-bold text-dark mb-2">Orthopedics</h5>
+            <p class="text-muted small mb-4">Fracture treatment, joint care, and sports injury rehabilitation.</p>
+            <button type="button" class="btn btn-outline-custom rounded-pill px-4 py-2 text-sm fw-semibold mt-auto btn-dept-booking" data-dept="Orthopedic Surgery">
+              Book Department
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctors Team Section -->
+  <section id="doctors" class="py-5" style="background: linear-gradient(180deg, #f0f9f8 0%, #f8fafc 100%);">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <span class="badge bg-white text-primary-custom fw-bold px-3 py-2 rounded-pill mb-2 border shadow-sm">
+          Our Team
+        </span>
+        <h2 class="fw-bold text-dark display-6 mb-2">Elite Medical Doctors</h2>
+        <p class="text-muted">Experienced consultants dedicated to providing quality medical care.</p>
+      </div>
+ 
+      <div class="row g-4 justify-content-center">
+        <!-- Doctor 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm p-4 text-center rounded-4 h-100 align-items-center bg-white dept-card">
+            <div class="mb-3 rounded-circle overflow-hidden p-1 bg-white shadow-sm" style="width: 125px; height: 125px; border: 2px solid var(--primary-light);">
+              <img src="images/person.jpg" alt="Dr. Karim Mansour" class="w-100 h-100 rounded-circle" style="object-fit: cover;">
+            </div>
+            <h5 class="fw-bold text-dark mb-1">Dr. Karim Mansour</h5>
+            <p class="text-muted small mb-2">Orthopedic Specialist</p>
+            <div class="text-warning small mb-3">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <button class="btn btn-outline-custom btn-sm rounded-pill px-4 fw-semibold btn-open-booking mt-auto">Book Appointment</button>
+          </div>
+        </div>
+
+        <!-- Doctor 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm p-4 text-center rounded-4 h-100 align-items-center bg-white dept-card">
+            <div class="mb-3 rounded-circle overflow-hidden p-1 bg-white shadow-sm" style="width: 125px; height: 125px; border: 2px solid var(--primary-light);">
+              <img src="images/person.jpg" alt="Dr. Mona Fouad" class="w-100 h-100 rounded-circle" style="object-fit: cover;">
+            </div>
+            <h5 class="fw-bold text-dark mb-1">Dr. Mona Fouad</h5>
+            <p class="text-muted small mb-2">Pediatrics Consultant</p>
+            <div class="text-warning small mb-3">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <button class="btn btn-outline-custom btn-sm rounded-pill px-4 fw-semibold btn-open-booking mt-auto">Book Appointment</button>
+          </div>
+        </div>
+
+        <!-- Doctor 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm p-4 text-center rounded-4 h-100 align-items-center bg-white dept-card">
+            <div class="mb-3 rounded-circle overflow-hidden p-1 bg-white shadow-sm" style="width: 125px; height: 125px; border: 2px solid var(--primary-light);">
+              <img src="images/person.jpg" alt="Dr. Ahmed Selim" class="w-100 h-100 rounded-circle" style="object-fit: cover;">
+            </div>
+            <h5 class="fw-bold text-dark mb-1">Dr. Ahmed Selim</h5>
+            <p class="text-muted small mb-2">Cardiology Consultant</p>
+            <div class="text-warning small mb-3">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <button class="btn btn-outline-custom btn-sm rounded-pill px-4 fw-semibold btn-open-booking mt-auto">Book Appointment</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-5 bg-white">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <span class="badge bg-light text-primary-custom fw-bold px-3 py-2 rounded-pill mb-2 border">
+          Patient Reviews
+        </span>
+        <h2 class="fw-bold text-dark display-6">What Our Patients Say</h2>
+      </div>
+
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          
+          <div class="carousel-item active">
+            <div class="col-md-8 mx-auto text-center">
+              <div class="p-4 p-md-5 rounded-4 shadow-sm bg-light border">
+                <i class="fa-solid fa-quote-left fs-1 text-primary-custom mb-3 opacity-40"></i>
+                <p class="fs-5 italic text-dark mb-4 leading-relaxed">"Excellent experience! The staff was extremely polite, and Dr. Karim was very thorough and attentive during the examination."</p>
+                <div class="text-warning mb-2">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <h6 class="fw-bold mb-0 text-dark">Mohamed Hassan</h6>
+                <small class="text-muted">Orthopedics Patient</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="col-md-8 mx-auto text-center">
+              <div class="p-4 p-md-5 rounded-4 shadow-sm bg-light border">
+                <i class="fa-solid fa-quote-left fs-1 text-primary-custom mb-3 opacity-40"></i>
+                <p class="fs-5 italic text-dark mb-4 leading-relaxed">"The online booking system saved so much time! We arrived and were seen right on schedule. Great care for my children."</p>
+                <div class="text-warning mb-2">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <h6 class="fw-bold mb-0 text-dark">Sara Ahmed</h6>
+                <small class="text-muted">Pediatrics Patient</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon p-2 bg-secondary rounded-circle" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon p-2 bg-secondary rounded-circle" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion Section -->
+  <section id="faq" class="py-5" style="background: linear-gradient(180deg, #f8fafc 0%, #f0f9f8 100%);">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <span class="badge bg-white text-primary-custom fw-bold px-3 py-2 rounded-pill mb-2 border shadow-sm">
+          Got Questions?
+        </span>
+        <h2 class="fw-bold text-dark display-6">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="accordion shadow-sm" id="faqAccordion">
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  How can I confirm my booking appointment?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-muted">
+                  Once you complete the online form, our system will automatically send an SMS confirmation to your mobile phone with all details.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  What are the official working hours of the clinic?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-muted">
+                  We are open Saturday to Thursday from 9:00 AM to 10:00 PM, and Fridays from 2:00 PM to 10:00 PM. Emergency service is available 24/7.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  Can I reschedule or cancel my appointment?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-muted">
+                  Yes, you can easily reschedule or cancel by calling our hotline 19999 at least 2 hours before your scheduled time.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner Call to Action -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="rounded-4 p-5 text-center text-white shadow-lg position-relative overflow-hidden" style="background: var(--accent-gradient);">
+        <h2 class="fw-extrabold mb-3 display-6">Ready to Welcome You Today</h2>
+        <p class="mb-4 opacity-90 col-md-8 mx-auto fs-6">Choose your appointment online, pick your doctor, and select a suitable time without waiting lines.</p>
         
-        <div class="row text-center g-4">
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm p-4 text-center align-items-center" style="border-radius: 20px;">
-                    <div style="width: 50px; height: 50px; background-color: #e8f7f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;" class="mb-3">💓</div>
-                    <h5 class="card-title fw-bold" style="color: #1f2937;">قسم القلب</h5>
-                    <p class="card-text text-muted small my-2">تشخيص وعلاج أمراض القلب بأحدث أجهزة الرسم والموجات الصوتية.</p>
-                    <a href="#" class="btn mt-3" style="border: 1px solid #007a78; color: #007a78; border-radius: 20px; font-size: 14px; padding: 6px 20px; font-weight: 600;">احجز في هذا القسم</a>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm p-4 text-center align-items-center" style="border-radius: 20px;">
-                    <div style="width: 50px; height: 50px; background-color: #e8f7f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;" class="mb-3">🫁</div>
-                    <h5 class="card-title fw-bold" style="color: #1f2937;">الصدر والحساسية</h5>
-                    <p class="card-text text-muted small my-2">متابعة دقيقة لحالات الربو والحساسية وأمراض الجهاز التنفسي.</p>
-                    <a href="#" class="btn mt-3" style="border: 1px solid #007a78; color: #007a78; border-radius: 20px; font-size: 14px; padding: 6px 20px; font-weight: 600;">احجز في هذا القسم</a>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm p-4 text-center align-items-center" style="border-radius: 20px;">
-                    <div style="width: 50px; height: 50px; background-color: #e8f7f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;" class="mb-3">😁</div>
-                    <h5 class="card-title fw-bold" style="color: #1f2937;">طب الأسنان</h5>
-                    <p class="card-text text-muted small my-2">تجميل وتركيبات وعلاج الجذور في جلسات مريحة وبدون ألم.</p>
-                    <a href="#" class="btn mt-3" style="border: 1px solid #007a78; color: #007a78; border-radius: 20px; font-size: 14px; padding: 6px 20px; font-weight: 600;">احجز في هذا القسم</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="row text-center g-4 mt-2">
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm p-4 text-center align-items-center" style="border-radius: 20px;">
-                    <div style="width: 50px; height: 50px; background-color: #e8f7f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;" class="mb-3">💧</div>
-                    <h5 class="card-title fw-bold" style="color: #1f2937;">الجلدية والتجميل</h5>
-                    <p class="card-text text-muted small my-2">حلول للبشرة والشعر بتقنيات الليزر المعتمدة عالمياً.</p>
-                    <a href="#" class="btn mt-3" style="border: 1px solid #007a78; color: #007a78; border-radius: 20px; font-size: 14px; padding: 6px 20px; font-weight: 600;">احجز في هذا القسم</a>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm p-4 text-center align-items-center" style="border-radius: 20px;">
-                    <div style="width: 50px; height: 50px; background-color: #e8f7f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;" class="mb-3">👶</div>
-                    <h5 class="card-title fw-bold" style="color: #1f2937;">طب الأطفال</h5>
-                    <p class="card-text text-muted small my-2">متابعة النمو والتطعيمات ورعاية كاملة لطفلك منذ الولادة.</p>
-                    <a href="#" class="btn mt-3" style="border: 1px solid #007a78; color: #007a78; border-radius: 20px; font-size: 14px; padding: 6px 20px; font-weight: 600;">احجز في هذا القسم</a>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm p-4 text-center align-items-center" style="border-radius: 20px;">
-                    <div style="width: 50px; height: 50px; background-color: #e8f7f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;" class="mb-3">💊</div>
-                    <h5 class="card-title fw-bold" style="color: #1f2937;">جراحة العظام</h5>
-                    <p class="card-text text-muted small my-2">علاج الكسور والإصابات الرياضية مع برنامج تأهيل متكامل.</p>
-                    <a href="#" class="btn mt-3" style="border: 1px solid #007a78; color: #007a78; border-radius: 20px; font-size: 14px; padding: 6px 20px; font-weight: 600;">احجز في هذا القسم</a>
-                </div>
-            </div>
-        </div>
+        <button type="button" class="btn btn-light rounded-pill px-5 py-3 fw-bold btn-open-booking text-primary-custom shadow">
+          <i class="fa-solid fa-calendar-plus me-2"></i>Book Your Appointment Now
+        </button>
+      </div>
     </div>
-</div>
- 
-<section class="py-5" style="background-color: #f0f9f8;" dir="rtl">
-  <div class="container text-center py-4">
-    
-   
-    <span class="badge rounded-pill px-3 py-2 mb-2" style="background-color: #e8f7f5; color: #007a78; font-size: 0.85rem; font-weight: 600;">
-      فريق العمل
-    </span>
-    <h2 class="fw-bold mb-5" style="color: #0f172a; font-size: 2.2rem;">نخبة من الأطباء</h2>
- 
-    <div class="row g-4 justify-content-center">
-      
-  
-      <div class="col-md-4">
-        <div class="card border-0 shadow-sm p-4 text-center rounded-4 h-100 align-items-center" style="background-color: #ffffff;">
-          <div class="mb-3 rounded-circle overflow-hidden shadow-sm" style="width: 120px; height: 120px;">
-            <img src="assests/images/person.jpg" alt="د. كريم منصور" class="w-100 h-100" style="object-fit: cover;">
-          </div>
-          <h5 class="fw-bold mb-1" style="color: #1f2937;">د. كريم منصور</h5>
-          <p class="text-muted small mb-0">أخصائي جراحة العظام</p>
+  </section>
+
+  <!-- Booking Modal -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold text-primary-custom" id="bookingModalLabel">
+            <i class="fa-regular fa-calendar-check me-2"></i>Book a New Appointment
+          </h5>
+          <button type="button" class="btn-close ms-auto me-0 shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-      </div>
-
- 
-      <div class="col-md-4">
-        <div class="card border-0 shadow-sm p-4 text-center rounded-4 h-100 align-items-center" style="background-color: #ffffff;">
-          <div class="mb-3 rounded-circle overflow-hidden shadow-sm" style="width: 120px; height: 120px;">
-            <img src="assests/images/person.jpg" alt="د. منى فؤاد" class="w-100 h-100" style="object-fit: cover;">
-          </div>
-          <h5 class="fw-bold mb-1" style="color: #1f2937;">د. منى فؤاد</h5>
-          <p class="text-muted small mb-0">استشاري طب الأطفال</p>
+        <div class="modal-body p-4">
+          <form id="bookingForm" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Full Name</label>
+              <input type="text" id="fullName" class="form-control rounded-3 py-2" placeholder="Enter your full name" required minlength="3">
+              <div class="invalid-feedback">Please provide your full name (at least 3 characters).</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Phone Number</label>
+              <input type="tel" id="phoneNumber" class="form-control rounded-3 py-2" placeholder="01XXXXXXXXX" required pattern="01[0125][0-9]{8}">
+              <div class="invalid-feedback">Please enter a valid Egyptian mobile number (11 digits).</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-semibold">Select Clinic / Department</label>
+              <select id="departmentSelect" class="form-select rounded-3 py-2" required>
+                <option value="" selected disabled>Select the appropriate department</option>
+                <option value="Cardiology Department">Cardiology Department</option>
+                <option value="Pulmonology & Allergy">Pulmonology & Allergy</option>
+                <option value="Dentistry">Dentistry</option>
+                <option value="Orthopedic Surgery">Orthopedic Surgery</option>
+                <option value="Pediatrics">Pediatrics</option>
+                <option value="Dermatology & Cosmetology">Dermatology & Cosmetology</option>
+              </select>
+              <div class="invalid-feedback">Please select a department.</div>
+            </div>
+            <div class="mb-4">
+              <label class="form-label small fw-semibold">Visit Date</label>
+              <input type="date" id="visitDate" class="form-control rounded-3 py-2" required>
+              <div class="invalid-feedback">Please select a valid date.</div>
+            </div>
+            <button type="submit" class="btn btn-primary-custom w-100 rounded-pill fw-bold py-2.5">
+              Confirm Booking
+            </button>
+          </form>
         </div>
-      </div>
-
- 
-      <div class="col-md-4">
-        <div class="card border-0 shadow-sm p-4 text-center rounded-4 h-100 align-items-center" style="background-color: #ffffff;">
-          <div class="mb-3 rounded-circle overflow-hidden shadow-sm" style="width: 120px; height: 120px;">
-            <img src="assests/images/person.jpg" alt="د. أحمد سليم" class="w-100 h-100" style="object-fit: cover;">
-          </div>
-          <h5 class="fw-bold mb-1" style="color: #1f2937;">د. أحمد سليم</h5>
-          <p class="text-muted small mb-0">استشاري القلب والأوعية الدموية</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
- 
-<section class="py-5" style="background-color: #ffffff;" dir="rtl">
-  <div class="container">
-    <div class="rounded-4 p-5 text-center text-white shadow-sm" style="background-color: #005a58;">
-      <h2 class="fw-bold mb-3">جاهزون لاستقبالك اليوم</h2>
-      <p class="mb-4 opacity-75" style="font-size: 0.95rem;">اختر موعدك إلكترونياً واختر الطبيب والوقت المناسب لك.</p>
-      
-      <!--   Modal -->
-      <button type="button" class="btn btn-light rounded-pill px-5 py-2 fw-bold" style="color: #005a58; font-size: 0.9rem;" data-bs-toggle="modal" data-bs-target="#bookingModal">
-        احجز موعدك الآن
-      </button>
-    </div>
-  </div>
-</section>
-
- 
-<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true" dir="rtl">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content rounded-4 border-0 shadow">
-      <div class="modal-header border-0 pb-0">
-        <h5 class="modal-title fw-bold" id="bookingModalLabel" style="color: #007a78;">حجز موعد جديد</h5>
-        <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4">
-        <form>
-          <div class="mb-3">
-            <label class="form-label small fw-semibold">الاسم بالكامل</label>
-            <input type="text" class="form-control rounded-3" placeholder="أدخل اسمك  ">
-          </div>
-          <div class="mb-3">
-            <label class="form-label small fw-semibold">رقم الهاتف</label>
-            <input type="tel" class="form-control rounded-3" >
-          </div>
-          <div class="mb-3">
-            <label class="form-label small fw-semibold">اختر العيادة / القسم</label>
-            <select class="form-select rounded-3">
-              <option selected disabled>اختر القسم المناسب</option>
-              <option>قسم القلب</option>
-              <option>الصدر والحساسية</option>
-              <option>طب الأسنان</option>
-              <option>جراحة العظام</option>
-              <option>طب الأطفال</option>
-              <option>الجلدية والتجميل</option>
-            </select>
-          </div>
-          <div class="mb-4">
-            <label class="form-label small fw-semibold">تاريخ الزيارة</label>
-            <input type="date" class="form-control rounded-3">
-          </div>
-          <button type="submit" class="btn w-100 rounded-pill text-white fw-bold py-2" style="background-color: #007a78;">تأكيد الحجز</button>
-        </form>
       </div>
     </div>
   </div>
-</div>
 
- 
-<footer style="background-color: #062826; color: #d1d5db;" class="pt-5 pb-3" dir="rtl">
-  <div class="container">
-    <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
-      
-       
-      <div class="col-md-4">
-        <h5 class="fw-bold text-white mb-3 d-flex align-items-center gap-2">
-          <span>🏥</span> عيادة الشفاء
-        </h5>
-        <p class="small leading-relaxed mb-3 opacity-75" style="max-width: 300px;">
-          
-        </p>
-        <div class="d-flex gap-2">
-          <a href="#" class="btn btn-sm btn-outline-light rounded-circle opacity-75">🌐</a>
-          <a href="#" class="btn btn-sm btn-outline-light rounded-circle opacity-75">📷</a>
-          <a href="#" class="btn btn-sm btn-outline-light rounded-circle opacity-75">💬</a>
+  <!-- Footer -->
+  <footer id="footer" style="background-color: #052220; color: #cbd5e1;" class="pt-5 pb-3">
+    <div class="container">
+      <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
+        
+        <div class="col-md-4">
+          <h5 class="fw-bold text-white mb-3 d-flex align-items-center gap-2">
+            <i class="fa-solid fa-hospital text-primary-custom"></i> El-Shifa Clinic
+          </h5>
+          <p class="small leading-relaxed mb-3 opacity-75" style="max-width: 320px;">
+            Providing high quality healthcare services with advanced techniques and compassionate care.
+          </p>
+          <div class="d-flex gap-2">
+            <a href="#" class="btn btn-sm btn-outline-light rounded-circle opacity-75" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
+            <a href="#" class="btn btn-sm btn-outline-light rounded-circle opacity-75" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="btn btn-sm btn-outline-light rounded-circle opacity-75" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" class="btn btn-sm btn-outline-light rounded-circle opacity-75" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
         </div>
-      </div>
  
-      <div class="col-md-2">
-        <h6 class="fw-bold text-white mb-3">روابط</h6>
-        <ul class="list-unstyled small opacity-75 d-flex flex-column gap-2">
-          <li><a href="#" class="text-white text-decoration-none">الرئيسية</a></li>
-          <li><a href="#" class="text-white text-decoration-none">خدماتنا</a></li>
-          <li><a href="#" class="text-white text-decoration-none">الأطباء</a></li>
-        </ul>
-      </div>
-
-     
-      <div class="col-md-3">
-        <h6 class="fw-bold text-white mb-3">مواعيد العمل</h6>
-        <ul class="list-unstyled small opacity-75 d-flex flex-column gap-2">
-          <li>السبت - الخميس: 9ص - 10م</li>
-          <li>الجمعة: 2م - 10م</li>
-          <li>الطوارئ: على مدار الساعة</li>
-        </ul>
-      </div>
-
-     
-      <div class="col-md-3">
-        <h6 class="fw-bold text-white mb-3">تواصل معنا</h6>
-        <ul class="list-unstyled small opacity-75 d-flex flex-column gap-2">
-          <li>📍 شارع النيل، المعادي، القاهرة</li>
-          <li>📞 19999</li>
-          <li>✉️ info@shifa-clinic.eg</li>
-        </ul>
-      </div>
-
-    </div>
-
- 
-    <div class="text-center pt-3 small opacity-50">
-      جميع الحقوق محفوظة © عيادة الشفاء 2026
-    </div>
-  </div>
-</footer>
+        <div class="col-md-2">
+          <h6 class="fw-bold text-white mb-3">Quick Links</h6>
+          <ul class="list-unstyled small opacity-75 d-flex flex-column gap-2">
+            <li><a href="#heroCarousel" class="text-white text-decoration-none">Home</a></li>
+            <li><a href="#services" class="text-white text-decoration-none">Our Services</a></li>
+            <li><a href="#doctors" class="text-white text-decoration-none">Doctors</a></li>
+            <li><a href="#faq" class="text-white text-decoration-none">FAQ</a></li>
+          </ul>
         </div>
-          
-    </div>
-  </div>
 
- 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="col-md-3">
+          <h6 class="fw-bold text-white mb-3">Working Hours</h6>
+          <ul class="list-unstyled small opacity-75 d-flex flex-column gap-2">
+            <li><i class="fa-regular fa-clock me-2"></i>Sat - Thu: 9:00 AM - 10:00 PM</li>
+            <li><i class="fa-regular fa-clock me-2"></i>Friday: 2:00 PM - 10:00 PM</li>
+            <li><i class="fa-solid fa-truck-medical me-2"></i>Emergency: 24 Hours</li>
+          </ul>
+        </div>
+
+        <div class="col-md-3">
+          <h6 class="fw-bold text-white mb-3">Contact Info</h6>
+          <ul class="list-unstyled small opacity-75 d-flex flex-column gap-2">
+            <li><i class="fa-solid fa-location-dot me-2"></i>Al-Nile Street, Maadi, Cairo</li>
+            <li><i class="fa-solid fa-phone me-2"></i><a href="tel:19999" class="text-white text-decoration-none">19999</a></li>
+            <li><i class="fa-regular fa-envelope me-2"></i><a href="mailto:info@shifa-clinic.eg" class="text-white text-decoration-none">info@shifa-clinic.eg</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="text-center pt-3 small opacity-50">
+        All Rights Reserved © El-Shifa Clinic 2026
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="assests/js/bootstrap.bundle.min.js"></script>
+  <script src="assests/js/all.min.js"></script>
+
+  <script src="main.js"></script>
 </body>
 </html>
